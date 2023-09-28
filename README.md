@@ -11,7 +11,7 @@ Notes:
 - If you remove an entire line, the corresponding
   file will _not_ be deleted.  It just remains
   untouched.
-- You can use any character in filenames, with one
+- You can use any character except newlines in filenames, with one
   special case:  backslashes have to be specified
   twice.
 - If there are any filename collisions, you will
