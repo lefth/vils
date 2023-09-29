@@ -36,6 +36,18 @@ if [[ $# -gt 0 ]]; then
 else
 	FILES=( * )
 fi
+for ((i=1; i<=$#FILES; i+=1)); do
+	if [[ $FILES[$i] == *$'\n'* ]]; then
+		echo "Cannot rename file with newline in the name: \"${FILES[$i]}\"\n" >&2
+		FILES[$i]=()
+		((i-=1))
+	fi
+done
+
+if [[ $#FILES -eq 0 ]]; then
+	echo "No files to rename" >&2
+	exit 1
+fi
 
 COUNT=$#FILES
 # For 15 files, the width would have to be "2", for IDs 01-15 (as opposed to 001-015)
